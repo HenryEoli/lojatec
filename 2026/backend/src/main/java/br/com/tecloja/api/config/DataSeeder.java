@@ -2,6 +2,7 @@ package br.com.tecloja.api.config;
 
 import br.com.tecloja.api.model.*;
 import br.com.tecloja.api.repository.*;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
