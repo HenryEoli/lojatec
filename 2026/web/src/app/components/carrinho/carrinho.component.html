@@ -1,0 +1,26 @@
+<h2>Carrinho de Compras</h2>
+
+@if (carrinhoService.itens().length === 0) {
+  <p>Seu carrinho está vazio.</p>
+  <a routerLink="/">Continuar Comprando</a>
+} @else {
+  <div class="itens">
+    @for (item of carrinhoService.itens(); track item.produtoId) {
+      <div class="item">
+        <span class="nome">{{ item.nome }}</span>
+        <span class="qtd">Qtd: {{ item.quantidade }}</span>
+        <span class="preco">R$ {{ (item.preco * item.quantidade).toFixed(2) }}</span>
+        <button (click)="carrinhoService.remover(item.produtoId)">Remover</button>
+      </div>
+    }
+  </div>
+
+  <div class="resumo">
+    <p>Total de itens: {{ carrinhoService.totalItens() }}</p>
+    <p>Valor total: R$ {{ carrinhoService.valorTotal().toFixed(2) }}</p>
+    <button (click)="finalizarPedido()">Finalizar Pedido</button>
+    <button (click)="carrinhoService.limpar()">Limpar Carrinho</button>
+  </div>
+
+  <a routerLink="/">Continuar Comprando</a>
+}

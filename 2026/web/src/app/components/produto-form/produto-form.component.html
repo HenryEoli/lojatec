@@ -1,0 +1,36 @@
+<h2>{{ isEditing ? 'Editar' : 'Novo' }} Produto</h2>
+
+<form (ngSubmit)="salvar()">
+  <div>
+    <label for="nome">Nome:</label>
+    <input id="nome" name="nome" type="text" [(ngModel)]="produto.nome" required />
+  </div>
+
+  <div>
+    <label for="descricao">Descrição:</label>
+    <textarea id="descricao" name="descricao" [(ngModel)]="produto.descricao" required></textarea>
+  </div>
+
+  <div>
+    <label for="preco">Preço:</label>
+    <input id="preco" name="preco" type="number" step="0.01" [(ngModel)]="produto.preco" required />
+  </div>
+
+  <div>
+    <label for="estoque">Estoque:</label>
+    <input id="estoque" name="estoque" type="number" [(ngModel)]="produto.estoque" required />
+  </div>
+
+  <div>
+    <label for="categoria">Categoria:</label>
+    <select id="categoria" name="categoriaId" [(ngModel)]="produto.categoriaId" required>
+      <option value="">Selecione...</option>
+      @for (cat of categorias; track cat.id) {
+        <option [value]="cat.id">{{ cat.nome }}</option>
+      }
+    </select>
+  </div>
+
+  <button type="submit">{{ isEditing ? 'Atualizar' : 'Criar' }}</button>
+  <a routerLink="/admin/produtos">Cancelar</a>
+</form>

@@ -1,0 +1,21 @@
+<h2>Login</h2>
+
+@if (erro) {
+  <p class="erro">{{ erro }}</p>
+}
+
+<form (ngSubmit)="login()">
+  <div>
+    <label for="username">Usuário:</label>
+    <input id="username" name="username" type="text" [(ngModel)]="username" required />
+  </div>
+
+  <div>
+    <label for="senha">Senha:</label>
+    <input id="senha" name="senha" type="password" [(ngModel)]="senha" required />
+  </div>
+
+  <button type="submit">Entrar</button>
+</form>
+
+<a routerLink="/">Voltar ao Catálogo</a>
