@@ -1,0 +1,35 @@
+name: CI/CD Frontend - TecLoja SPA
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Código Fonte
+      uses: actions/checkout@v3
+
+    - name: Configurar Node.js (v18)
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+        cache: 'npm'
+
+    - name: Instalar Dependências (npm ci)
+      run: npm ci
+
+    - name: Compilar SPA para Produção
+      run: npm run build -- --configuration=production
+
+    - name: Instalar Netlify CLI
+      run: npm install -g netlify-cli
+
+    - name: Deploy de Produção para Netlify
+      env:
+        NETLIFY_AUTH_TOKEN: $
+        NETLIFY_SITE_ID: $
+      run: |
+        netlify deploy --dir=dist/tecloja/browser --prod --message="Deploy Automático via GitHub Actions - Commit $GITHUB_SHA"
