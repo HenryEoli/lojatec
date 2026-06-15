@@ -7,7 +7,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const token = authService.getToken();
 
   // Ignorar requisições externas (como APIs de CEP) ou chamadas de Login
-  if (token && req.url.includes('api/')) {
+  if (token && req.url.includes('/api/')) {
     const authReq = req.clone({
       setHeaders: {
         Authorization: `Bearer ${token}`

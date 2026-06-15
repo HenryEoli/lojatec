@@ -2,7 +2,6 @@ package br.com.tecloja.api.service.impl;
 
 import br.com.tecloja.api.model.Usuario;
 import br.com.tecloja.api.repository.UsuarioRepository;
-
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;

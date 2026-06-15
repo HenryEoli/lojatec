@@ -10,7 +10,7 @@ import { LoginResponse } from '../models/auth.model';
 export class AuthService {
   private http = inject(HttpClient);
   private router = inject(Router);
-  private apiUrl = 'https://backend.render.com/api/auth'; // Altere para http://localhost:8080/api/auth em dev local
+  private apiUrl = 'http://localhost:8080/api/v1/auth';
 
   // Signal Reativo contendo o usuário logado e seu papel administrativo
   currentUser = signal<LoginResponse | null>(this.getStoredUser());

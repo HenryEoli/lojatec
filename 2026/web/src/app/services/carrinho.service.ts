@@ -18,7 +18,7 @@ export interface CartItem {
 export class CarrinhoService {
   private http = inject(HttpClient);
   private authService = inject(AuthService);
-  private apiUrl = 'https://backend.render.com/api/pedidos';
+  private apiUrl = 'http://localhost:8080/api/v1/pedidos';
 
   // Signal Writable com a lista de itens
   itens = signal<CartItem[]>([]);
@@ -61,7 +61,7 @@ export class CarrinhoService {
 
     // Constrói o DTO de formulário de pedido esperado pelo backend
     const pedidoForm = {
-      clienteId: 1, // Fixado id didático do cliente maria@gmail.com criado pelo Seeder
+      clienteId: 1, // Fixado id didático do cliente usuario@email.com criado pelo Seeder
       itens: this.itens().map(item => ({
         produtoId: item.produtoId,
         quantidade: item.quantidade

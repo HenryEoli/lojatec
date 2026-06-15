@@ -49,8 +49,8 @@ class PedidoServiceImplTest {
         // Inicializa Cliente Falso
         cliente = new Cliente();
         cliente.setId(1L);
-        cliente.setNome("Maria Silva");
-        cliente.setEmail("maria@gmail.com");
+        cliente.setNome("Usuário Padrão");
+        cliente.setEmail("usuario@email.com");
 
         // Inicializa Produto Falso
         notebook = new Produto();
@@ -87,7 +87,7 @@ class PedidoServiceImplTest {
         assertEquals(100L, resultado.id());
         assertEquals("PAGO", resultado.status());
         assertEquals(1L, resultado.clienteId());
-        assertEquals("Maria Silva", resultado.clienteNome());
+        assertEquals("Usuário Padrão", resultado.clienteNome());
         assertEquals(1, resultado.itens().size());
         assertEquals(new BigDecimal("10000.00"), resultado.valorTotal()); // 2 unidades x R$ 5000.00
 
